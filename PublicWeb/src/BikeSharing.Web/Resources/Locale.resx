@@ -123,6 +123,9 @@
   <data name="Cities_Boston" xml:space="preserve">
     <value>Coming Soon...</value>
   </data>
+  <data name="Cities_London" xml:space="preserve">
+    <value>Coming Soon...</value>
+  </data>
   <data name="Cities_MexicoCity" xml:space="preserve">
     <value>Coming Soon...</value>
   </data>

@@ -171,14 +171,15 @@
                 new { Name = "SanFrancisco", Locale = Locale.Cities_SanFrancisco },
                 new { Name = "Boston", Locale = Locale.Cities_Boston },
                 new { Name = "Barcelona", Locale = Locale.Cities_Barcelona },
-                new { Name = "MexicoCity", Locale = Locale.Cities_MexicoCity }
+                new { Name = "MexicoCity", Locale = Locale.Cities_MexicoCity },
+                new { Name = "London", Locale = Locale.Cities_London }
             }
         .ToList();
     }
     <section id="cities" class="mb-cities js-cities">
         @for (int i = 1; i <= cities.Count; i++)
         {
-            if (i == 3)
+            if (i == 4)
             {
                 <input class="mb-cities-check js-cities-check" type="radio" checked="checked" name="bikes-slider" id="bikes-slider_@i" />
             }

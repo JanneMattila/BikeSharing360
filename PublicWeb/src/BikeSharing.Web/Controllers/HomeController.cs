@@ -11,7 +11,7 @@ namespace BikeSharing.Web.Controllers
 
         private static readonly HashSet<string> ValidCities = new HashSet<string>
         {
-            "NewYork", "Seattle", "SanFrancisco", "Boston", "Barcelona", "MexicoCity"
+            "NewYork", "Seattle", "SanFrancisco", "Boston", "Barcelona", "MexicoCity", "London"
         };
 
         // GET: Home
@@ -95,6 +95,7 @@ namespace BikeSharing.Web.Controllers
                 case "Boston": return Resources.Locale.Cities_Boston;
                 case "Barcelona": return Resources.Locale.Cities_Barcelona;
                 case "MexicoCity": return Resources.Locale.Cities_MexicoCity;
+                case "London": return Resources.Locale.Cities_London;
                 default: return name;
             }
         }
