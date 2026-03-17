@@ -46,7 +46,7 @@ jobs:
         run: msbuild ${{ env.PROJECT_PATH }} /p:Configuration=Release /p:DeployOnBuild=true /p:PublishUrl="${{ env.PUBLISH_PATH }}"
 
       - name: Upload build artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: web-app
           path: ${{ env.PUBLISH_PATH }}
@@ -59,7 +59,7 @@ jobs:
 
     steps:
       - name: Download build artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: web-app
           path: web-app
@@ -86,7 +86,7 @@ jobs:
 
     steps:
       - name: Download build artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: web-app
           path: web-app
