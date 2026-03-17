@@ -662,7 +662,6 @@
     <Content Include="Content\www\fonts\SourceSansPro\SourceSansPro-SemiboldItalic.eot" />
     <Content Include="Content\www\fonts\SourceSansPro\SourceSansPro-SemiboldItalic.ttf" />
     <Content Include="Content\www\fonts\SourceSansPro\SourceSansPro-SemiboldItalic.woff" />
-    <Content Include="Content\www\images\favicons\.cache" />
     <Content Include="Content\www\images\favicons\manifest.json" />
     <Content Include="Content\www\images\favicons\manifest.webapp" />
     <Content Include="ApplicationInsights.config" />
