@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - master
+  pull_request:
+    branches:
+      - master
   workflow_dispatch:
 
 permissions:
@@ -16,7 +19,7 @@ env:
   PUBLISH_PATH: PublicWeb/src/BikeSharing.Web/obj/Release/Package/PackageTmp
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: windows-latest
 
     steps:
@@ -42,6 +45,25 @@ jobs:
       - name: Build solution
         run: msbuild ${{ env.PROJECT_PATH }} /p:Configuration=Release /p:DeployOnBuild=true /p:PublishUrl="${{ env.PUBLISH_PATH }}"
 
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: web-app
+          path: ${{ env.PUBLISH_PATH }}
+
+  deploy-staging:
+    if: github.event_name == 'pull_request'
+    needs: build
+    runs-on: windows-latest
+    environment: staging
+
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: web-app
+          path: web-app
+
       - name: Login to Azure
         uses: azure/login@v3
         with:
@@ -49,8 +71,35 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-      - name: Deploy to Azure App Service
+      - name: Deploy to staging slot
         uses: azure/webapps-deploy@v3
         with:
           app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
-          package: ${{ env.PUBLISH_PATH }}
+          slot-name: staging
+          package: web-app
+
+  deploy-production:
+    if: github.event_name == 'push'
+    needs: build
+    runs-on: windows-latest
+    environment: production
+
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: web-app
+          path: web-app
+
+      - name: Login to Azure
+        uses: azure/login@v3
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Deploy to production
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
+          package: web-app
