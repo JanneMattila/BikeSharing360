@@ -74,7 +74,7 @@
         </article>
     </section>
 
-    <section class="mb-hiw">
+    <section id="hiw" class="mb-hiw">
         <header class="mb-site-header mb-site-header--big">
             @Locale.HiW_Title
         </header>
@@ -115,7 +115,7 @@
         </ul>
     </section>
 
-    <section class="mb-popular">
+    <section id="popular" class="mb-popular">
         <header class="mb-site-header mb-site-header--brand">
             @Locale.Intelligent_Title
         </header>
@@ -175,7 +175,7 @@
             }
         .ToList();
     }
-    <section class="mb-cities js-cities">
+    <section id="cities" class="mb-cities js-cities">
         @for (int i = 1; i <= cities.Count; i++)
         {
             if (i == 3)
@@ -231,7 +231,7 @@
                             @Html.Partial("_Image", new { name = "bw_bike_" + city.Name, alt = city.Locale + " gray", pre = false })
                         </div>
 
-                        <div class="mb-cities-button u-center-horizontal">@city.Locale</div>
+                        <a href="@Url.Action("City", "Home", new { name = city.Name })" class="mb-cities-button u-center-horizontal" style="display: block; text-decoration: none; color: inherit; cursor: pointer;">@city.Locale</a>
                     </div>
                 }
             </div>
@@ -251,7 +251,7 @@
         </div>
     </section>
 
-    <section class="mb-clients">
+    <section id="clients" class="mb-clients">
         <div class="mb-clients-background">
             @Html.Partial("_Image", new { name = "background_comments", alt = "Clients comments", pre = true })
         </div>

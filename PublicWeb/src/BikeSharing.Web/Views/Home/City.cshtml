@@ -1,0 +1,96 @@
+@using BikeSharing.Web.Resources
+
+<style>
+    .city-bike-image {
+        display: flex;
+        justify-content: center;
+    }
+    .city-bike-image picture {
+        display: block;
+        max-width: 600px;
+        width: 100%;
+    }
+    .city-bike-image img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+    .city-detail-hero {
+        text-align: center;
+        padding: 40px 0;
+    }
+    .city-detail-hero .mb-site-header {
+        margin-bottom: 30px;
+    }
+</style>
+
+<div class="mb-site container">
+    <section class="mb-header row flex-items-xs-middle">
+        <div class="col-xs-4">
+            <div class="mb-header-logo u-align-left">
+                <a href="@Url.Action("Index", "Home")">
+                    <img src="@Url.Content("~/Content/www/images/logo.svg")" alt="BikeSharing Logo">
+                </a>
+            </div>
+        </div>
+        <div class="col-xs-8">
+            <nav class="mb-menu u-align-right">
+                <ul class="mb-menu-wrapper">
+                    <li class="mb-menu-item">
+                        <a class="mb-menu-link" href="@Url.Action("Index", "Home")">@Locale.Menu_HiW</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <section class="city-detail-hero">
+        <header class="mb-site-header mb-site-header--big">
+            @ViewBag.CityDisplayName
+        </header>
+        <div class="city-bike-image">
+            @Html.Partial("_Image", new { name = "bike_" + (string)ViewBag.CityName, alt = (string)ViewBag.CityDisplayName, pre = false })
+        </div>
+    </section>
+
+    <section class="mb-hiw" style="padding: 40px 0;">
+        <div class="mb-site-container">
+            <div class="row">
+                <div class="col-xs-12" style="text-align: center;">
+                    <img src="@Url.Content("~/Content/www/images/city_" + ViewBag.CityName + ".svg")" alt="@ViewBag.CityDisplayName skyline" style="max-width: 100%; display: block; margin: 0 auto;">
+                </div>
+            </div>
+            <div class="row" style="margin-top: 30px; text-align: center;">
+                <div class="col-xs-12">
+                    <p style="font-size: 1.2em;">@Locale.Cities_Text</p>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px; text-align: center;">
+                <div class="col-xs-12">
+                    <a href="@Url.Action("Index", "Home")" class="mb-cities-button" style="display: inline-block; cursor: pointer;">
+                        &#8592; @Locale.Menu_Cities
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="mb-footerb"></div>
+    <footer class="mb-footer">
+        <div class="mb-site-container">
+            <div class="row u-m-0">
+                <div class="col-xs-4">
+                    <img class="mb-footer-logo" src="@Url.Content("~/Content/www/images/logo_square.svg")" alt="BikeSharing Logo">
+                    <img class="mb-footer-ms" src="@Url.Content("~/Content/www/images/microsoft.svg")" alt="Microsoft Logo">
+                </div>
+                <div class="col-xs-8 u-align-right">
+                    <ul class="mb-footer-menu">
+                        <li class="mb-footer-item">
+                            <a class="mb-footer-link" href="@Url.Action("Index", "Home")#cities">@Locale.Menu_Cities</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>

@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
+using Microsoft.ApplicationInsights.Extensibility;
 
 namespace BikeSharing.Web
 {
@@ -7,6 +8,12 @@ namespace BikeSharing.Web
     {
         protected void Application_Start()
         {
+            var connectionString = System.Configuration.ConfigurationManager.AppSettings["ApplicationInsights:ConnectionString"];
+            if (!string.IsNullOrEmpty(connectionString))
+            {
+                TelemetryConfiguration.Active.ConnectionString = connectionString;
+            }
+
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
