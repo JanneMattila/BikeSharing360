@@ -1,0 +1,55 @@
+/*
+Error: File to import not found or unreadable: ../../../node_modules/bootstrap/scss/custom.
+        on line 6 of src/scss/vendor/vendor.scss
+
+1: /* stylelint-disable *\/
+2: 
+3: @import 'overrides';
+4: 
+5: // Core variables and mixins
+6: @import '../../../node_modules/bootstrap/scss/custom';
+7: @import '../../../node_modules/bootstrap/scss/variables';
+8: @import '../../../node_modules/bootstrap/scss/mixins';
+9: 
+10: // Reset and dependencies
+11: @import '../../../node_modules/bootstrap/scss/normalize';
+
+Backtrace:
+src/scss/vendor/vendor.scss:6
+C:/Ruby34-x64/lib/ruby/gems/3.4.0/gems/sass-3.7.4/lib/sass/tree/import_node.rb:67:in 'Sass::Tree::ImportNode#import'
+C:/Ruby34-x64/lib/ruby/gems/3.4.0/gems/sass-3.7.4/lib/sass/tree/import_node.rb:28:in 'Sass::Tree::ImportNode#imported_file'
+C:/Ruby34-x64/lib/ruby/gems/3.4.0/gems/sass-3.7.4/lib/sass/tree/import_node.rb:37:in 'Sass::Tree::ImportNode#css_import?'
+C:/Ruby34-x64/lib/ruby/gems/3.4.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:310:in 'Sass::Tree::Visitors::Perform#visit_import'
+C:/Ruby34-x64/lib/ruby/gems/3.4.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in 'Sass::Tree::Visitors::Base#visit'
+C:/Ruby34-x64/lib/ruby/gems/3.4.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in 'block in Sass::Tree::Visitors::Perform#visit'
+C:/Ruby34-x64/lib/ruby/gems/3.4.0/gems/sass-3.7.4/lib/sass/stack.rb:79:in 'block in Sass::Stack#with_base'
+C:/Ruby34-x64/lib/ruby/gems/3.4.0/gems/sass-3.7.4/lib/sass/stack.rb:135:in 'Sass::Stack#with_frame'
+C:/Ruby34-x64/lib/ruby/gems/3.4.0/gems/sass-3.7.4/lib/sass/stack.rb:79:in 'Sass::Stack#with_base'
+C:/Ruby34-x64/lib/ruby/gems/3.4.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in 'Sass::Tree::Visitors::Perform#visit'
+C:/Ruby34-x64/lib/ruby/gems/3.4.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:52:in 'block in Sass::Tree::Visitors::Base#visit_children'
+C:/Ruby34-x64/lib/ruby/gems/3.4.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:52:in 'Array#map'
+C:/Ruby34-x64/lib/ruby/gems/3.4.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:52:in 'Sass::Tree::Visitors::Base#visit_children'
+C:/Ruby34-x64/lib/ruby/gems/3.4.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:167:in 'block in Sass::Tree::Visitors::Perform#visit_children'
+C:/Ruby34-x64/lib/ruby/gems/3.4.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:179:in 'Sass::Tree::Visitors::Perform#with_environment'
+C:/Ruby34-x64/lib/ruby/gems/3.4.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:166:in 'Sass::Tree::Visitors::Perform#visit_children'
+C:/Ruby34-x64/lib/ruby/gems/3.4.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in 'block in Sass::Tree::Visitors::Base#visit'
+C:/Ruby34-x64/lib/ruby/gems/3.4.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:186:in 'Sass::Tree::Visitors::Perform#visit_root'
+C:/Ruby34-x64/lib/ruby/gems/3.4.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in 'Sass::Tree::Visitors::Base#visit'
+C:/Ruby34-x64/lib/ruby/gems/3.4.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:157:in 'Sass::Tree::Visitors::Perform#visit'
+C:/Ruby34-x64/lib/ruby/gems/3.4.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:10:in 'Sass::Tree::Visitors::Perform.visit'
+C:/Ruby34-x64/lib/ruby/gems/3.4.0/gems/sass-3.7.4/lib/sass/tree/root_node.rb:36:in 'Sass::Tree::RootNode#css_tree'
+C:/Ruby34-x64/lib/ruby/gems/3.4.0/gems/sass-3.7.4/lib/sass/tree/root_node.rb:29:in 'Sass::Tree::RootNode#render_with_sourcemap'
+C:/Ruby34-x64/lib/ruby/gems/3.4.0/gems/sass-3.7.4/lib/sass/engine.rb:389:in 'Sass::Engine#_render_with_sourcemap'
+C:/Ruby34-x64/lib/ruby/gems/3.4.0/gems/sass-3.7.4/lib/sass/engine.rb:307:in 'Sass::Engine#render_with_sourcemap'
+C:/Ruby34-x64/lib/ruby/gems/3.4.0/gems/sass-3.7.4/lib/sass/exec/sass_scss.rb:387:in 'Sass::Exec::SassScss#run'
+C:/Ruby34-x64/lib/ruby/gems/3.4.0/gems/sass-3.7.4/lib/sass/exec/sass_scss.rb:63:in 'Sass::Exec::SassScss#process_result'
+C:/Ruby34-x64/lib/ruby/gems/3.4.0/gems/sass-3.7.4/lib/sass/exec/base.rb:50:in 'Sass::Exec::Base#parse'
+C:/Ruby34-x64/lib/ruby/gems/3.4.0/gems/sass-3.7.4/lib/sass/exec/base.rb:18:in 'Sass::Exec::Base#parse!'
+C:/Ruby34-x64/lib/ruby/gems/3.4.0/gems/sass-3.7.4/bin/sass:13:in '<top (required)>'
+C:/Ruby34-x64/bin/sass:25:in 'Kernel#load'
+C:/Ruby34-x64/bin/sass:25:in '<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: File to import not found or unreadable: ../../../node_modules/bootstrap/scss/custom.\A         on line 6 of src/scss/vendor/vendor.scss\A \A 1: /* stylelint-disable */\A 2: \A 3: @import 'overrides';\A 4: \A 5: // Core variables and mixins\A 6: @import '../../../node_modules/bootstrap/scss/custom';\A 7: @import '../../../node_modules/bootstrap/scss/variables';\A 8: @import '../../../node_modules/bootstrap/scss/mixins';\A 9: \A 10: // Reset and dependencies\A 11: @import '../../../node_modules/bootstrap/scss/normalize';"; }
