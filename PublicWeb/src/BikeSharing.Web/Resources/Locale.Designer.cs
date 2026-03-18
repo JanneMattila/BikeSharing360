@@ -81,6 +81,15 @@ namespace BikeSharing.Web.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Coming Soon....
         /// </summary>
+        public static string Cities_London {
+            get {
+                return ResourceManager.GetString("Cities_London", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Coming Soon....
+        /// </summary>
         public static string Cities_MexicoCity {
             get {
                 return ResourceManager.GetString("Cities_MexicoCity", resourceCulture);
