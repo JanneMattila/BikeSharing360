@@ -8,7 +8,7 @@ namespace BikeSharing.Web
     {
         protected void Application_Start()
         {
-            var connectionString = System.Configuration.ConfigurationManager.AppSettings["ApplicationInsights:ConnectionString"];
+            var connectionString = System.Configuration.ConfigurationManager.AppSettings["APPLICATIONINSIGHTS_CONNECTION_STRING"];
             if (!string.IsNullOrEmpty(connectionString))
             {
                 TelemetryConfiguration.Active.ConnectionString = connectionString;
