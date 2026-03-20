@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
+using System.Net;
 using System.Web.Mvc;
 using Microsoft.ApplicationInsights;
 
@@ -8,7 +11,6 @@ namespace BikeSharing.Web.Controllers
     public class HomeController : Controller
     {
         private static readonly TelemetryClient _telemetry = new TelemetryClient();
-
         private static readonly HashSet<string> ValidCities = new HashSet<string>
         {
             "NewYork", "Seattle", "SanFrancisco", "Boston", "Barcelona", "MexicoCity"
@@ -33,12 +35,34 @@ namespace BikeSharing.Web.Controllers
                 { "CityName", name }
             });
 
+            var bikeAvailability = GetBikeAvailability(name);
+            ViewBag.BikeAvailability = bikeAvailability;
+
             ConfigureAvailabilityContext(name);
 
             ViewBag.CityName = name;
             ViewBag.CityDisplayName = GetDisplayName(name);
 
             return View();
+        }
+
+        private static string GetBikeAvailability(string cityName)
+        {
+            var backendUrl = ConfigurationManager.AppSettings["PrivateWebsite"];
+            if (string.IsNullOrEmpty(backendUrl))
+            {
+                return null;
+            }
+
+            var requestUrl = backendUrl + "?City=" + cityName;
+            var request = WebRequest.CreateHttp(requestUrl);
+            request.Timeout = 5000;
+            using (var response = (HttpWebResponse)request.GetResponse())
+            using (var stream = response.GetResponseStream())
+            using (var reader = new StreamReader(stream))
+            {
+                return reader.ReadToEnd();
+            }
         }
 
         private static void ConfigureAvailabilityContext(string name)

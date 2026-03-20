@@ -98,8 +98,17 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-      - name: Deploy to production
+      - name: Deploy to staging slot
         uses: azure/webapps-deploy@v3
         with:
           app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
+          slot-name: staging
           package: web-app
+
+      - name: Swap staging to production
+        run: |
+          az webapp deployment slot swap `
+            --name ${{ secrets.AZURE_WEBAPP_NAME }} `
+            --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} `
+            --slot staging `
+            --target-slot production
