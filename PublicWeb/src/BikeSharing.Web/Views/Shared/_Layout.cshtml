@@ -8,7 +8,7 @@
     <link href="~/Content/build/css/styles.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
         !function(v,y,T){var S=v.location,k="script",C="instrumentationKey",z="ingestionendpoint",E="disableExceptionTracking",A="ai.device.",M="toLowerCase",I=(C)[M](),b=T||y["applicationInsightsSDK"];(v[b]=v[b]||function(){(v[b].q=v[b].q||[]).push(arguments)});var n=y.createElement(k),r=y.getElementsByTagName(k)[0];n.src="https://js.monitor.azure.com/scripts/b/ai.3.gbl.min.js";r.parentNode.insertBefore(n,r)}(window,document);
-        var defined = "@System.Configuration.ConfigurationManager.AppSettings["ApplicationInsights:ConnectionString"]";
+        var defined = "@System.Configuration.ConfigurationManager.AppSettings["APPLICATIONINSIGHTS_CONNECTION_STRING"]";
         if (defined && defined.indexOf("YOUR_INSTRUMENTATION_KEY") === -1) {
             var init = new Microsoft.ApplicationInsights.ApplicationInsights({
                 config: { connectionString: defined }
