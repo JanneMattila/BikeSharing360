@@ -85,7 +85,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AI.Web">
-      <HintPath>..\..\packages\Microsoft.ApplicationInsights.Web.2.21.0\lib\net46\Microsoft.AI.Web.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.ApplicationInsights.Web.2.21.0\lib\net452\Microsoft.AI.Web.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AI.PerfCounterCollector">
