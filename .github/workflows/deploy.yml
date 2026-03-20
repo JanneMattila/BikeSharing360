@@ -78,6 +78,14 @@ jobs:
           slot-name: staging
           package: web-app
 
+      - name: Configure WEBSITE_RUN_FROM_PACKAGE
+        run: |
+          az webapp config appsettings set `
+            --name ${{ secrets.AZURE_WEBAPP_NAME }} `
+            --resource-group ${{ secrets.AZURE_WEBAPP_RESOURCE_GROUP }} `
+            --slot staging `
+            --settings WEBSITE_RUN_FROM_PACKAGE=1
+
   deploy-production:
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     needs: build
@@ -104,6 +112,14 @@ jobs:
           app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
           slot-name: staging
           package: web-app
+
+      - name: Configure WEBSITE_RUN_FROM_PACKAGE
+        run: |
+          az webapp config appsettings set `
+            --name ${{ secrets.AZURE_WEBAPP_NAME }} `
+            --resource-group ${{ secrets.AZURE_WEBAPP_RESOURCE_GROUP }} `
+            --slot staging `
+            --settings WEBSITE_RUN_FROM_PACKAGE=1
 
       - name: Swap staging to production
         run: |
