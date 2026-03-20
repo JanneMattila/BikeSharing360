@@ -101,6 +101,12 @@ namespace BikeSharing.Web.Controllers
                 }
             }
 
+            // Fallback zone for cities that don't match any tier-1 or tier-2 classification
+            if (availabilityZone == null)
+            {
+                availabilityZone = "zone-default";
+            }
+
             // Enrich telemetry with resolved zone metadata for capacity planning
             _telemetry.TrackEvent("AvailabilityZoneResolved", new Dictionary<string, string>
             {
