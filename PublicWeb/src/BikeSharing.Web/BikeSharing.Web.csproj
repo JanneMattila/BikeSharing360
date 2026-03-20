@@ -88,6 +88,10 @@
       <HintPath>..\..\packages\Microsoft.ApplicationInsights.Web.2.21.0\lib\net452\Microsoft.AI.Web.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.8\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.PerfCounterCollector">
       <HintPath>..\..\packages\Microsoft.AI.PerfCounterCollector.2.21.0\lib\net452\Microsoft.AI.PerfCounterCollector.dll</HintPath>
       <Private>True</Private>
