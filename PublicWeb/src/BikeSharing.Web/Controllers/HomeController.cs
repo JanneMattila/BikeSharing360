@@ -46,6 +46,8 @@ namespace BikeSharing.Web.Controllers
             return View();
         }
 
+        // Returns bike availability data for the given city, or null if the backend is
+        // unavailable or returns an error response.
         private static string GetBikeAvailability(string cityName)
         {
             var backendUrl = ConfigurationManager.AppSettings["PrivateWebsite"];
@@ -57,11 +59,23 @@ namespace BikeSharing.Web.Controllers
             var requestUrl = backendUrl + "?City=" + cityName;
             var request = WebRequest.CreateHttp(requestUrl);
             request.Timeout = 5000;
-            using (var response = (HttpWebResponse)request.GetResponse())
-            using (var stream = response.GetResponseStream())
-            using (var reader = new StreamReader(stream))
+            try
             {
-                return reader.ReadToEnd();
+                using (var response = (HttpWebResponse)request.GetResponse())
+                using (var stream = response.GetResponseStream())
+                using (var reader = new StreamReader(stream))
+                {
+                    return reader.ReadToEnd();
+                }
+            }
+            catch (Exception ex)
+            {
+                _telemetry.TrackException(ex, new Dictionary<string, string>
+                {
+                    { "Operation", "GetBikeAvailability" },
+                    { "City", cityName }
+                });
+                return null;
             }
         }
 
@@ -104,7 +118,7 @@ namespace BikeSharing.Web.Controllers
             // Enrich telemetry with resolved zone metadata for capacity planning
             _telemetry.TrackEvent("AvailabilityZoneResolved", new Dictionary<string, string>
             {
-                { "Zone", availabilityZone.ToLowerInvariant() },
+                { "Zone", availabilityZone?.ToLowerInvariant() ?? "zone-unknown" },
                 { "RegionWeight", regionWeight.ToString() }
             });
         }
