@@ -102,6 +102,16 @@ namespace BikeSharing.Web.Controllers
             }
 
             // Enrich telemetry with resolved zone metadata for capacity planning
+            if (availabilityZone == null)
+            {
+                _telemetry.TrackEvent("AvailabilityZoneUnresolved", new Dictionary<string, string>
+                {
+                    { "CityName", name },
+                    { "RegionWeight", regionWeight.ToString() }
+                });
+                return;
+            }
+
             _telemetry.TrackEvent("AvailabilityZoneResolved", new Dictionary<string, string>
             {
                 { "Zone", availabilityZone.ToLowerInvariant() },
