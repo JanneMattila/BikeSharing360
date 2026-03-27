@@ -11,6 +11,12 @@ namespace BikeSharing.Web
     {
         protected void Application_Start()
         {
+            var connectionString = System.Configuration.ConfigurationManager.AppSettings["APPLICATIONINSIGHTS_CONNECTION_STRING"];
+            if (!string.IsNullOrEmpty(connectionString))
+            {
+                TelemetryConfiguration.Active.ConnectionString = connectionString;
+            }
+
             var backendUrl = ConfigurationManager.AppSettings["PrivateWebsite"];
             if (!string.IsNullOrEmpty(backendUrl))
             {
@@ -24,12 +30,6 @@ namespace BikeSharing.Web
                         Console.WriteLine("Backend server OK");
                     }
                 }
-            }
-
-            var connectionString = System.Configuration.ConfigurationManager.AppSettings["APPLICATIONINSIGHTS_CONNECTION_STRING"];
-            if (!string.IsNullOrEmpty(connectionString))
-            {
-                TelemetryConfiguration.Active.ConnectionString = connectionString;
             }
 
             AreaRegistration.RegisterAllAreas();
