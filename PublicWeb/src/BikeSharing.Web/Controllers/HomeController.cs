@@ -11,6 +11,7 @@ namespace BikeSharing.Web.Controllers
     public class HomeController : Controller
     {
         private static readonly TelemetryClient _telemetry = new TelemetryClient();
+        private const string FallbackAvailabilityZone = "zone-default";
         private static readonly HashSet<string> ValidCities = new HashSet<string>
         {
             "NewYork", "Seattle", "SanFrancisco", "Boston", "Barcelona", "MexicoCity"
@@ -103,7 +104,7 @@ namespace BikeSharing.Web.Controllers
 
             if (availabilityZone == null)
             {
-                availabilityZone = "zone-default";
+                availabilityZone = FallbackAvailabilityZone;
             }
 
             // Enrich telemetry with resolved zone metadata for capacity planning
