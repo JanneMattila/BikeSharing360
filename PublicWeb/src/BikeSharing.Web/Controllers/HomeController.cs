@@ -11,6 +11,7 @@ namespace BikeSharing.Web.Controllers
     public class HomeController : Controller
     {
         private static readonly TelemetryClient _telemetry = new TelemetryClient();
+        private const string DefaultAvailabilityZone = "zone-default";
         private static readonly HashSet<string> ValidCities = new HashSet<string>
         {
             "NewYork", "Seattle", "SanFrancisco", "Boston", "Barcelona", "MexicoCity"
@@ -101,7 +102,7 @@ namespace BikeSharing.Web.Controllers
                 }
             }
 
-            availabilityZone = availabilityZone ?? "zone-default";
+            availabilityZone = availabilityZone ?? DefaultAvailabilityZone;
 
             // Enrich telemetry with resolved zone metadata for capacity planning
             _telemetry.TrackEvent("AvailabilityZoneResolved", new Dictionary<string, string>
