@@ -101,6 +101,11 @@ namespace BikeSharing.Web.Controllers
                 }
             }
 
+            if (availabilityZone == null)
+            {
+                availabilityZone = "zone-default";
+            }
+
             // Enrich telemetry with resolved zone metadata for capacity planning
             _telemetry.TrackEvent("AvailabilityZoneResolved", new Dictionary<string, string>
             {
