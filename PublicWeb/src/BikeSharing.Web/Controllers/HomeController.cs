@@ -10,6 +10,7 @@ namespace BikeSharing.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private const string UnknownAvailabilityZone = "zone-default";
         private static readonly TelemetryClient _telemetry = new TelemetryClient();
         private static readonly HashSet<string> ValidCities = new HashSet<string>
         {
@@ -104,7 +105,7 @@ namespace BikeSharing.Web.Controllers
             // Enrich telemetry with resolved zone metadata for capacity planning
             _telemetry.TrackEvent("AvailabilityZoneResolved", new Dictionary<string, string>
             {
-                { "Zone", availabilityZone.ToLowerInvariant() },
+                { "Zone", (availabilityZone ?? UnknownAvailabilityZone).ToLowerInvariant() },
                 { "RegionWeight", regionWeight.ToString() }
             });
         }
